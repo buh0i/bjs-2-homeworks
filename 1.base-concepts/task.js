@@ -1,5 +1,5 @@
+"use strict"
 function solveEquation(a, b, c) {
-  "use strict"
   let arr = [];
   let d = ((b**2)-(4*a*c));
   if (d === 0) {
@@ -7,15 +7,11 @@ function solveEquation(a, b, c) {
   } else if (d > 0) {
     arr.push((-b + Math.sqrt(d))/(2*a))
     arr.push((-b - Math.sqrt(d))/(2*a))
-  } else {
-    arr = [];
   } 
   return arr; // array
 }
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
-  "use strict"
-
   percent = +percent;
   contribution = +contribution;
   amount = +amount;
@@ -36,24 +32,24 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     return `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`
   } else if (typeof amount !== "number") {
     return `Параметр "Общая стоимость" содержит неправильное значение "${amount}"`
-  } else {
-    console.log(bodyOfCredit, nowDate, _MS_PER_MONTH);
+  } 
+  console.log(bodyOfCredit, nowDate, _MS_PER_MONTH);
 
-    function dateDiffInDays(nowDate, date) {
-      let utc1 = Date.UTC(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate());
-      let utc2 = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
-      console.log(utc1, utc2);
-      return Math.floor((utc2 - utc1) / _MS_PER_MONTH);
-    }
-  
-    remainingMonths = dateDiffInDays(nowDate, date);
-  
-    monthlyPayment = bodyOfCredit * ((truePercent/12) + ((truePercent/12) / (((1 + (truePercent/12))**remainingMonths) - 1)));
-  
-    totalAmount = monthlyPayment * remainingMonths;
-  
-    console.log("Сколько месяцев платить: " + +remainingMonths + " Ежемесячный платеж: " + +monthlyPayment.toFixed(2) + " Сколько всего платить: " + +totalAmount.toFixed(2));
+  function dateDiffInDays(nowDate, date) {
+    let utc1 = Date.UTC(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate());
+    let utc2 = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+    console.log(utc1, utc2);
+    return Math.floor((utc2 - utc1) / _MS_PER_MONTH);
   }
 
-  return totalAmount.toFixed(2);
+  remainingMonths = dateDiffInDays(nowDate, date);
+
+  monthlyPayment = bodyOfCredit * ((truePercent/12) + ((truePercent/12) / (((1 + (truePercent/12))**remainingMonths) - 1)));
+
+  totalAmount = monthlyPayment * remainingMonths;
+
+  console.log("Сколько месяцев платить: " + +remainingMonths + " Ежемесячный платеж: " + +monthlyPayment.toFixed(2) + " Сколько всего платить: " + +totalAmount.toFixed(2));
+
+
+  return +totalAmount.toFixed(2);
 }
