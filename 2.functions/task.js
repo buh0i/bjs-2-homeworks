@@ -27,7 +27,7 @@ function worker(arr) {
   for (let i = 0; i < arr.length; i++) {
     sum += arr[i];
   }
-  console.log (arr, sum);
+  console.log(arr, sum);
   return +sum;
 }
 
@@ -35,14 +35,13 @@ function makeWork(arrOfArr, func) {
   let max = 0;
   
   for (let i = 0; i < arrOfArr.length; i++) {
-    func(arrOfArr[i]);
     let sum = func(arrOfArr[i]);
-    console.log (sum, max, sum > max);
+    console.log(sum, max, sum > max);
     if (sum > +max) {
       max = sum;
     };
   };
-  console.log (max);
+  console.log(max);
   return max;
 }
 
@@ -60,6 +59,6 @@ function worker2(arr) {
     }
   }
 
-  console.log (max, min, Math.abs(max - min))
+  console.log(max, min, Math.abs(max - min))
   return Math.abs(max - min)
 }
