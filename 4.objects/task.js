@@ -4,9 +4,9 @@ function Student(name, gender, age) {
   this.age = age;
 }
 
-let Vova = new Student("Владимир", "Муж.", 45);
-let Petya = new Student("Петр", "Муж.", 67);
-let Alisa = new Student("Алиса", "Жен.", 25);
+let vova = new Student("Владимир", "Муж.", 45);
+let vetya = new Student("Петр", "Муж.", 67);
+let alisa = new Student("Алиса", "Жен.", 25);
 
 Student.prototype.setSubject = function (subjectName) {
 
@@ -20,32 +20,39 @@ Student.prototype.addMark = function (mark) {
     }
 }
 
-Student.prototype.addMarks = function (mark1, mark2, mark3, ...rest) {
-  this.marks.push(mark1, mark2, mark3, ...rest);
+Student.prototype.addMarks = function (...rest) {
+  if(this.marks === undefined){ 
+    this.marks = [];
+    this.marks.push(...rest);
+    } else {
+      this.marks.push(...rest);
+    }
 }
 
 Student.prototype.getAverage = function () {
   let sum = 0;
   for (let i = 0; i < this.marks.length; i++) {
-    sum += marks[i];
+    sum += this.marks[i];
   }
-  console.log(sum / this.marks.length)
   return sum / this.marks.length;
 }
 
 Student.prototype.exclude = function (reason) {
   delete this.subject;
   delete this.marks;
-  let excluded = {
-    reason: reason,
+  this.excluded = {
+    reason,
   }
-
 }
 
-Vova.addMark(3);
-Vova.addMark(4);
-Vova.addMark(5);
-Vova.addMarks(2, 2, 2, 5, 5, 4, 3);
-Vova.getAverage;
+vova.addMark(3);
+vova.addMark(4);
+vova.addMark(5);
+vova.addMarks(2, 2, 2, 5, 5, 4, 3);
+console.log(vova.getAverage())
+console.log(vova);
 
-console.log (Vova);
+let petya = new Student("Петр", "Муж.", 67);
+petya.addMarks(3, 4, 5);
+console.log(petya);
+
